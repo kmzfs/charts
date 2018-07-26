@@ -106,6 +106,9 @@ spec:
             - name: "{{ $key }}"
               value: "{{ $value }}"
 {{- end }}
+{{- if .Values.extraEnv }}
+{{ toYaml .Values.extraEnv | indent 12 }}
+{{- end }}
           livenessProbe:
             httpGet:
               path: /api/health
